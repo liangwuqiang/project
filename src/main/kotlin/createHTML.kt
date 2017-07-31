@@ -5,7 +5,6 @@
  */
 
 fun createHTML() {
-    tempFile.writeText("")  //清空临时文件
 
     val word = StringBuilder()
     val text = StringBuilder()
@@ -59,16 +58,16 @@ fun createHTML() {
             <title>单词分级颜色显示</title>
         </head>
         <body>
-            <p>说明：</p>
-            <p>
-                <font color="black">[掌握 $percentBlack%]</font>
+            <p>词库说明：[高频665][中频1023][低频1404][不规则626]</p>
+            <p>当前统计：
+                <font color="black">[基本$percentBlack%]</font>
 
-                <font color="green">[高频 $percentGreen%]</font>
-                <font color="blue">[中频 $percentBlue%]</font>
-                <font color="red">[低频 $percentRed%]</font>
-                <font color="gray">[生僻 $percentGray%]</font>
+                <font color="green">[高频$percentGreen%]</font>
+                <font color="blue">[中频$percentBlue%]</font>
+                <font color="red">[低频$percentRed%]</font>
+                <font color="gray">[生僻$percentGray%]</font>
 
-                <font color="purple">[不规则 $percentPurple%]</font>
+                <font color="purple">[不规则$percentPurple%]</font>
             </p>
     """)
 

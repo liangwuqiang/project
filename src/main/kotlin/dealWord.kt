@@ -8,24 +8,24 @@ fun dealWord(word: String): String {  //只处理一个单词
     for (i in arrayDict.indices) {
         val dict = openDictFile(arrayDict[i])
         for (item in dict) {
-            val word1 = word.toLowerCase()
-            val word2 = item.name.toLowerCase().trim()
-            if (word1 == word2
-                || word1 == word2+"s"  //复数
-                || word1 == word2+"es"  //复数
-                || word1 == word2+"d"  //过去式
-                || word1 == word2+"ed"  //过去式
-                || word1 == word2+"ing"  //进行时
-                || word1 == word2+"er"  //比较级
-                || word1 == word2+"est"  //最高级
+            val wordFromArticle = word.toLowerCase()  //来自文章
+            val wordFromDict = item.name.toLowerCase()  //来自词典
+            if (wordFromArticle == wordFromDict
+                || wordFromArticle == wordFromDict + "s"  //复数
+                || wordFromArticle == wordFromDict + "es"  //复数
+                || wordFromArticle == wordFromDict + "d"  //过去式
+                || wordFromArticle == wordFromDict + "ed"  //过去式
+                || wordFromArticle == wordFromDict + "ing"  //进行时
+                || wordFromArticle == wordFromDict + "er"  //比较级
+                || wordFromArticle == wordFromDict + "est"  //最高级
             ) {
                 when(arrayDict[i]) {
                     "MyWords", "A-Z" -> {totalBlack += 1}
                     "irregular" -> {totalPurple += 1}
 
-                    "Collins5" -> {totalGreen += 1}
-                    "Collins4" -> {totalBlue += 1}
-                    "Collins3" -> {totalRed += 1}
+                    "high_freq" -> {totalGreen += 1}
+                    "medium_freq" -> {totalBlue += 1}
+                    "low_freq" -> {totalRed += 1}
                     else -> {totalGray += 1}
                 }
 
@@ -34,9 +34,9 @@ fun dealWord(word: String): String {  //只处理一个单词
                     "A-Z" -> "<font color='black'>$word</font>"  //字母表
                     "irregular" -> "<font color='purple'>$word</font>"  //不规则动词
 
-                    "Collins5" -> "<font color='green'>$word</font>"  //5星
-                    "Collins4" -> "<font color='blue'>$word</font>"  //4星
-                    "Collins3" -> "<font color='red'>$word</font>"  //3星
+                    "high_freq" -> "<font color='green'>$word</font>"  //5星
+                    "medium_freq" -> "<font color='blue'>$word</font>"  //4星
+                    "low_freq" -> "<font color='red'>$word</font>"  //3星
                     else -> "<font color='gray'>$word</font>"
                 }
             }
